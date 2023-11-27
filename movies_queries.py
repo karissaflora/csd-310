@@ -1,8 +1,14 @@
 import mysql.connector
-cnx = mysql.connector.connect(user='movies_user', password='Big69Qua',
-                              host='localhost',
-                              database='movies')
-cursor = cnx.cursor()
+from mysql.connector import errorcode
+#open a connection to the MySQL server and store the connection object in the variable config
+config = {
+    "user":"root",
+    "password":"Big69Qua",
+    "host":"localhost",
+    "database":"movies",
+    "raise_on_warnings": True}
+db= mysql.connector.connect(**config)
+cursor = db.cursor()
 query = "SELECT * from studio"
 cursor.execute(query)
 result=cursor.fetchall()
@@ -36,4 +42,4 @@ for row in result:
     print("Director:",row[1])
     print(" ")
 cursor.close()
-cnx.close()
+db.close()

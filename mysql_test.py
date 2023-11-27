@@ -1,8 +1,14 @@
 import mysql.connector
+from mysql.connector import errorcode
 #open a connection to the MySQL server and store the connection object in the variable cnx
-cnx = mysql.connector.connect(user='movies_user', password='Big69Qua',
-                              host='localhost',
-                              database='movies')
+config = {
+    "user":"root",
+    "password":"Big69Qua",
+    "host":"localhost",
+    "database":"movies",
+    "raise_on_warnings": True}
+
+# ** fucntion calls to unpack keywords arguments
 try:
     db= mysql.connector.connect(**config)
 
